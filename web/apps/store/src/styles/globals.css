@@ -1,0 +1,466 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-angle: 360deg;
+
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-hovered: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --primary: 211 61% 48%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: ;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --error-label: 0 84.2% 60.2%;
+
+    --ring: 240 5% 64.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-hovered: 240 10% 6.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+
+    --primary: 211 61% 48%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: ;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --error-label: 0 92.2% 64.9%;
+
+    --ring: 240 3.7% 15.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html,
+body,
+#__next,
+main {
+  scroll-padding-top: 64px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+.from-background {
+  --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position);
+}
+
+.custom-scrollable-element::-webkit-scrollbar {
+  width: 0.6rem;
+}
+.custom-scrollable-element::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom-scrollable-element::-webkit-scrollbar-thumb {
+  @apply rounded-l-xl bg-neutral-300/50 dark:bg-zinc-700/50;
+}
+
+.custom-scrollable-element::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-300 dark:bg-zinc-600;
+}
+
+#container {
+  mask: linear-gradient(90deg, #0000, #000 10% 80%, #0000);
+  -webkit-mask: linear-gradient(90deg, #0000, #000 10% 80%, #0000);
+}
+
+@media (min-width: 1400px) {
+  #container {
+    /* here we calculate the diffrence between screen width and the container width (1400px)
+    then split that on half to make carousel align left with the rest of the content and i added some rems to aligned perfectly */
+    padding-left: calc(((100vw - 1400px) + 12rem) / 2);
+  }
+}
+
+@keyframes movingbackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -50%);
+  }
+}
+
+.container {
+  @apply mx-auto max-w-[1400px] px-4 md:px-24;
+}
+
+@property --gradient-angle {
+  syntax: '<angle>'; /* <- defined as type angle for the transition to work */
+  initial-value: 360deg;
+  inherits: false;
+}
+
+.animate-beam {
+  opacity: 0;
+  transform: translate(-72%, -62%) scale(0.5);
+  animation: beam 2s 0.75s ease 1 forwards;
+}
+
+@keyframes beam {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+/* portrait */
+@media (orientation: portrait) {
+  .animate-beam {
+    opacity: 0;
+    transform: translate(-62%, -40%) scale(0.5);
+    animation: beam 2s 0.75s ease 1 forwards;
+  }
+}
+
+/* tablet */
+@media (max-width: 1025px) {
+  @keyframes beam {
+    to {
+      opacity: 1;
+      transform: translate(-40%, -40%) scale(1);
+    }
+  }
+}
+
+.animate-newstar {
+  opacity: 0;
+  animation: newstar 1.5s 0.95s ease 1 forwards;
+}
+.animate-oldstar {
+  opacity: 1;
+  animation: oldstar 1.5s 0.95s ease 1 forwards;
+}
+
+@keyframes newstar {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes oldstar {
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-bg-gradient-to-center {
+  animation: bg-to-center 1s 0.75s ease 1 forwards;
+}
+.animate-bg-gradient-to-center-title {
+  animation: bg-to-center 1s 0.95s ease 1 forwards;
+}
+
+@keyframes bg-to-center {
+  to {
+    background-position: center;
+  }
+}
+
+.animate-logo-light {
+  filter: brightness(90%);
+  animation: logo-light 1.25s 0.85s ease 1 forwards;
+}
+@keyframes logo-light {
+  to {
+    filter: brightness(110%);
+  }
+}
+
+.animate-3d-logo {
+  opacity: 0.1;
+  animation: logo-3d 1.25s 0.85s ease 1 forwards;
+}
+@keyframes logo-3d {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 360deg;
+  }
+
+  100% {
+    --gradient-angle: 0deg;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+  scrollbar-width: none; /* Firefox */
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+* {
+  @apply focus:ring-blue-600 group-focus:ring-blue-600;
+}
+
+a {
+  @apply focus:outline-none focus-visible:ring-2;
+}
+
+.infinite-scroll-x-container {
+  overflow: hidden;
+  mask: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+  -webkit-mask: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+.infinite-scroll-x {
+  animation: infinite-scroll-x 120s linear infinite;
+}
+
+.infinite-scroll-x-reverse {
+  animation: infinite-scroll-x 120s linear infinite reverse;
+}
+
+.infinite-scroll-x:hover,
+.infinite-scroll-x-reverse:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infinite-scroll-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.fancy-border-gradient::before {
+  inset: 0;
+  content: '';
+  --angle: 0deg;
+  position: absolute;
+  border-radius: inherit;
+  padding: 1.5px; /* control the border thickness */
+  background: conic-gradient(
+    from var(--angle),
+    #3178c622,
+    #3178c644 35%,
+    #3178c688 39%,
+    #3178c6,
+    #3178c688 61%,
+    #3178c644 65%,
+    #3178c622
+  );
+  -webkit-mask-composite: xor;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  animation: 3s rotate linear infinite;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.ReactQueryDevtools > button {
+  margin-bottom: 5rem !important;
+}
+
+/* overrides silly annoying shadcn default */
+/* it doesn't transition shadows by default */
+.shadcnoverridetransition {
+  transition: all 0.3s ease !important;
+}
+.shadcnoverridetransition:active {
+  transition: all 0.075s ease !important;
+}
+
+.stars {
+  background-size: 200px 200px;
+  background-image: radial-gradient(2px 2px at 40px 60px, #ccc, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 20px 50px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 30px 100px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 60px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 110px 90px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 190px 150px, white, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+}
+
+.stars:first-of-type {
+  animation: stars-move-right-1 200s linear infinite;
+}
+
+.stars:nth-of-type(2) {
+  background-image: radial-gradient(2px 2px at 25px 35px, #ccc, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 55px 20px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 69px 42px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 42px 69px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 32px 90px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 190px, white, rgba(0, 0, 0, 0));
+  animation: stars-move-right-2 111s linear infinite;
+}
+
+.stars:nth-of-type(3) {
+  background-image: radial-gradient(2px 2px at 60px 40px, #ccc, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 20px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 100px 30px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60px 40px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 110px, white, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 150px 190px, white, rgba(0, 0, 0, 0));
+  animation: stars-move-right-3 69s linear infinite;
+}
+
+@keyframes stars-move-right-1 {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes stars-move-right-2 {
+  to {
+    transform: translateX(100%) scale(2);
+  }
+}
+@keyframes stars-move-right-3 {
+  to {
+    transform: translateX(100%) scale(3);
+  }
+}
+
+.animate-amogfly {
+  transform: translateX(-33vw);
+  animation: amogfly 15s 2s linear infinite forwards;
+}
+
+.th-amogfly {
+  transform: translateX(-33vw);
+  animation: thfly 25s 15.25s linear infinite forwards;
+}
+
+@keyframes thfly {
+  0% {
+    transform: translateX(-33vw);
+  }
+  100% {
+    transform: translateX(1337vw) rotate(6969deg);
+  }
+}
+
+@keyframes amogfly {
+  0% {
+    transform: translateX(-33vw);
+    filter: hue-rotate(0deg) brightness(200%);
+  }
+  100% {
+    transform: translateX(200vw) rotate(1337deg);
+    filter: hue-rotate(720deg) brightness(200%);
+  }
+}
+
+.hamburger .line {
+  width: 20px;
+  height: 2px;
+  background-color: hsl(var(--foreground));
+  display: block;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger {
+  padding: 5px;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.hamburger .line:nth-child(1) {
+  height: 2px;
+}
+
+.hamburger.is-active .line:nth-child(1) {
+  height: 2px;
+  -webkit-transform: translateY(5px) rotate(45deg);
+  -ms-transform: translateY(5px) rotate(45deg);
+  -o-transform: translateY(5px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
+}
+
+.hamburger.is-active .line:nth-child(2) {
+  -webkit-transform: translateY(-5px) rotate(-45deg);
+  -ms-transform: translateY(-5px) rotate(-45deg);
+  -o-transform: translateY(-5px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+body.mobile-nav-active {
+  overflow: hidden;
+}

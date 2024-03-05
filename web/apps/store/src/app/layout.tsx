@@ -1,13 +1,12 @@
-import { Toaster } from '@store/ui/components/toaster';
+
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 import { getStaticParams } from '~/locales/server';
 import '../styles/globals.css';
 import { Providers } from './[locale]/providers';
 import type {Metadata} from "next";
-import { env } from "~/env.mjs"
 import { siteConfig } from "~/config/site";
-import { absoluteUrl } from "~/lib/utils";
+import { Toaster } from "@store/ui/components/toaster"
 
 export function generateStaticParams() {
   return getStaticParams();
@@ -16,7 +15,7 @@ export function generateStaticParams() {
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(String(!process.env.NEXT_PUBLIC_APP_URL)),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -45,6 +44,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
   }
 }
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
