@@ -1,26 +1,64 @@
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
+import { prisma } from '@store/db';
+import { auth } from '@store/auth/server';
 
-const f = createUploadthing();
+const f = createUploadthing({
+  /**
+   * Log out more information about the error, but don't return it to the client
+   * @see https://docs.uploadthing.com/errors#error-formatting
+   */
+  errorFormatter: (err) => {
+    console.log('Error uploading file', err.message);
+    console.log('  - Above error caused by:', err.cause);
+
+    return { message: err.message };
+  },
+});
+
+type ValidFileTypes = 'audio' | 'blob' | 'image' | 'video';
+type FileRouterInput =
+  | Record<
+      ValidFileTypes,
+      {
+        maxFileSize: '4MB';
+        maxFileCount: number;
+      }
+    >
+  | ValidFileTypes[];
+
+// control the file sizes for all image types
+const DEFAULT_IMAGE_UPLOAD_PARAMS: FileRouterInput = {
+  audio: { maxFileSize: '4MB', maxFileCount: 1 },
+  blob: { maxFileSize: '4MB', maxFileCount: 1 },
+  image: { maxFileSize: '4MB', maxFileCount: 1 },
+  video: { maxFileSize: '4MB', maxFileCount: 1 },
+};
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
-  productImage: f({ image: { maxFileSize: '4MB', maxFileCount: 3 } })
+  imageUploader: f({
+    'image/png': DEFAULT_IMAGE_UPLOAD_PARAMS.image,
+    'image/jpeg': DEFAULT_IMAGE_UPLOAD_PARAMS.image,
+  })
     // Set permissions and file types for this FileRoute
-    .middleware(async (req) => {
-      // This code runs on your server before upload
-      // const user = await currentUser()
-      // If you throw, the user will not be able to upload
-      // if (!user) throw new Error("Unauthorized")
-      // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      // return { userId: user.id }
-    })
-    // eslint-disable-next-line @typescript-eslint/require-await
-    .onUploadComplete(async ({ metadata, file }) => {
-      // This code RUNS ON YOUR SERVER after upload
-      console.log('Upload complete for userId:', metadata.userId);
+    .middleware(async () => {
+      const session = await auth();
 
-      console.log('file url', file.url);
+      // If you throw, the user will not be able to upload
+      if (!session?.user?.id) throw new Error('Unauthorized');
+
+      // Whatever is returned here is accessible in onUploadComplete as `metadata`
+      return { userId: session.user.id };
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      // save to db
+      await prisma.imageUpload.create({
+        data: {
+          url: file.url,
+          user: { connect: { id: metadata.userId } },
+        },
+      });
     }),
 } satisfies FileRouter;
 
