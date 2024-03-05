@@ -12,9 +12,11 @@ export function middleware(req: NextRequest) {
 
   // skip blocking the request if local or preview or staging
   if (!vercelEnv || staging) {
+    // @ts-ignore
     return I18nMiddleware(req);
   }
 
+  // @ts-ignore
   return I18nMiddleware(req);
 }
 

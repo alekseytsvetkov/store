@@ -14,8 +14,11 @@ export function generateStaticParams() {
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const OG_URL =
+  process.env.NODE_ENV !== 'production' ? 'http://localhost:4200' : 'https://og.store.dev';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(String(!process.env.NEXT_PUBLIC_APP_URL)),
+  metadataBase: new URL(OG_URL),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,

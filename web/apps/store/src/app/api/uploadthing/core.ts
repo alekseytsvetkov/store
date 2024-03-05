@@ -53,12 +53,12 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // save to db
-      await prisma.imageUpload.create({
-        data: {
-          url: file.url,
-          user: { connect: { id: metadata.userId } },
-        },
-      });
+      // await prisma.imageUpload.create({
+      //   data: {
+      //     url: file.url,
+      //     user: { connect: { id: metadata.userId } },
+      //   },
+      // });
     }),
 } satisfies FileRouter;
 

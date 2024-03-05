@@ -20,6 +20,7 @@
         "EDGE_CONFIG",
         "NEXTAUTH_SECRET",
         "NEXTAUTH_URL",
+        "AUTH_SECRET",
         "NEXT_PUBLIC_APP_URL",
         "PORT",
         "USERNAME",
