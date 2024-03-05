@@ -1,0 +1,12 @@
+{
+  "extends": "@store/tsconfig/react-library.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "baseUrl": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../../apps/web/src/components/ui/footsies.tsx"],
+  "exclude": ["node_modules"]
+}
