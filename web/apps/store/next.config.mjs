@@ -5,7 +5,6 @@ import { withSentryConfig } from '@sentry/nextjs';
 import bundleAnalyzer from '@next/bundle-analyzer';
 // eslint-disable-next-line import/no-unresolved
 import million from 'million/compiler';
-import("./src/env.mjs")
 
 const millionConfig = {
     auto: { rsc: true },
