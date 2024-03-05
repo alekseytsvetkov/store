@@ -6,12 +6,6 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'unicorn/filename-case': 'off',
     '@typescript-eslint/consistent-type-imports': ['warn', { disallowTypeAnnotations: false }],
-    // Rules below here can be re-enabled when the team wants to address them.
-    // When this repo was first monorepo'ed and given tighter checks,
-    // there were too many issues to address all at once.
-    // They are organized into groups based on what type of warning they are.
-    // ---
-    // Potential Bugs
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
@@ -41,10 +35,6 @@ module.exports = {
     'no-control-regex': 'off',
     'no-return-await': 'off',
     '@typescript-eslint/require-await': 'off',
-
-    // Best practice/readability
-    // Some of these might be opinions.
-    // You can ignore if you'd like.
     'eslint-comments/no-unlimited-disable': 'off',
     'prefer-named-capture-group': 'off',
     'prefer-regex-literals': 'off',
@@ -60,8 +50,6 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     'func-names': 'off',
     'no-console': 'off',
-
-    // a11y
     'jsx-a11y/html-has-lang': 'off',
     'jsx-a11y/no-redundant-roles': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
