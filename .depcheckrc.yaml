@@ -1,0 +1,12 @@
+ignores:
+  - '@types/eslint'
+  - '@types/react-dom'
+  - '@types/prettier'
+  - '@t3-oss/env-nextjs'
+  - 'postcss'
+  - 'raw-loader'
+  - 'tsx'
+  - 'postcss'
+  - 'autoprefixer'
+  - 'prettier-plugin-tailwindcss'
+  - '@'

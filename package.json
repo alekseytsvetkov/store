@@ -1,0 +1,39 @@
+{
+  "name": "store",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "checks": "turbo format lint typecheck --continue",
+    "checks:fix": "turbo format:fix lint:fix typecheck --continue --force",
+    "clean": "turbo clean && rm -rf node_modules && rm -rf .turbo",
+    "db:push": "turbo db:push",
+    "db:reset": "turbo db:reset",
+    "db:seed": "turbo db:seed",
+    "db:prod:seed": "turbo db:reset && turbo db:prod:seed",
+    "db:studio": "turbo db:studio",
+    "dl-git": "turbo dl-git",
+    "format": "prettier . \"!./web/apps/**\" \"!./web/packages/**\" \"!./web/tooling/**\" --check --cache --cache-location=\"node_modules/.cache/prettiercache\"",
+    "format:fix": "prettier . \"!./web/apps/**\" \"!./web/packages/**\" \"!./web/tooling/**\" --write --cache --cache-location=\"node_modules/.cache/prettiercache\" --log-level=warn",
+    "lint": "eslint . --cache --cache-location \"node_modules/.cache/.eslintcache\" --max-warnings 0",
+    "lint:fix": "eslint . --fix --cache --cache-location \"node_modules/.cache/.eslintcache\" --max-warnings 0",
+    "refresh": "turbo db:reset db:seed --concurrency=1",
+    "tunnel": "cloudflared tunnel --url http://localhost:3000",
+    "typecheck": "turbo typecheck --continue"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tsx": "^3.14.0",
+    "turbo": "^1.12.4",
+    "type-testing": "0.2.0",
+    "typescript": "^5.3.3",
+    "vitest": "^0.34.6"
+  },
+  "packageManager": "pnpm@8.6.9",
+  "pnpm": {
+    "overrides": {
+      "@auth/core": "0.19.0"
+    }
+  }
+}

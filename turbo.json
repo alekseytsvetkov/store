@@ -1,0 +1,61 @@
+{
+    "pipeline": {
+      "build": {
+        "dependsOn": ["^build", "@store/db#db:generate"],
+        "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "topo": {
+        "dependsOn": ["^topo"]
+      },
+      "//#format": {
+        "outputs": ["node_modules/.cache/prettiercache"],
+        "outputMode": "errors-only"
+      },
+      "format": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/prettiercache"],
+        "outputMode": "errors-only"
+      },
+      "//#format:fix": {
+        "outputs": ["node_modules/.cache/prettiercache"],
+        "outputMode": "errors-only"
+      },
+      "format:fix": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/prettiercache"],
+        "outputMode": "errors-only"
+      },
+      "//#lint": {
+        "outputs": ["node_modules/.cache/.eslintcache"],
+        "outputMode": "errors-only"
+      },
+      "lint": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/.eslintcache"],
+        "outputMode": "errors-only"
+      },
+      "//#lint:fix": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/.eslintcache"],
+        "outputMode": "errors-only"
+      },
+      "lint:fix": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/.eslintcache"],
+        "outputMode": "errors-only"
+      },
+      "typecheck": {
+        "dependsOn": ["@store/db#db:generate", "^topo"],
+        "outputs": ["node_modules/.cache/tsbuildinfo.json"],
+        "outputMode": "errors-only"
+      },
+      "clean": {
+        "cache": false
+      },
+      "dev": {
+        "dependsOn": ["@store/db#db:generate"],
+        "persistent": true,
+        "cache": false
+      }
+    }
+  }
+}

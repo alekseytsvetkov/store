@@ -1,0 +1,24 @@
+version: '3'
+
+name: store
+
+services:
+  db:
+    image: bitnami/mysql:latest
+    container_name: store-db
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: dev
+      MYSQL_ROOT_PASSWORD: dev
+      MYSQL_DATABASE: store
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 20s
+      retries: 10
+    volumes:
+      - store-data:/bitnami/mysql/data
+    ports:
+      - 3306:3306
+volumes:
+  store-data:
+    driver: local
