@@ -12,6 +12,7 @@
     "db:seed": "turbo db:seed",
     "db:prod:seed": "turbo db:reset && turbo db:prod:seed",
     "db:studio": "turbo db:studio",
+    "dev": "turbo dev --concurrency=1000",
     "dl-git": "turbo dl-git",
     "format": "prettier . \"!./web/apps/**\" \"!./web/packages/**\" \"!./web/tooling/**\" --check --cache --cache-location=\"node_modules/.cache/prettiercache\"",
     "format:fix": "prettier . \"!./web/apps/**\" \"!./web/packages/**\" \"!./web/tooling/**\" --write --cache --cache-location=\"node_modules/.cache/prettiercache\" --log-level=warn",
