@@ -1,4 +1,6 @@
 'use client';
+import { SiteFooter } from '~/components/layouts/site-footer';
+import { SiteHeader } from '~/components/layouts/site-header';
 import { I18nProviderClient } from '~/locales/client';
 
 export default function RootLayout({
@@ -11,7 +13,11 @@ export default function RootLayout({
   return (
     <>
       <I18nProviderClient locale={locale}>
-        <main className="flex-1">{children}</main>
+        <SiteHeader />
+        <main className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
       </I18nProviderClient>
     </>
   );

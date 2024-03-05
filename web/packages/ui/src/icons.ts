@@ -13,7 +13,7 @@ export {
   ChevronRight,
   ChevronUp,
   Command,
-  Circle,
+  Circle as CircleIcon,
   Clipboard,
   Copy,
   Diamond,
@@ -54,5 +54,8 @@ export {
   UserCircleIcon,
   CompassIcon,
   LogOutIcon,
-  StoreIcon
+  StoreIcon,
+  GithubIcon,
+  Wallet as WalletIcon,
+  Bell as BellIcon,
 } from 'lucide-react';

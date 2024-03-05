@@ -7,6 +7,9 @@ export const siteConfig = {
   description: "Store description",
   url: "https://store.dev",
   ogImage: "https://store.dev/og-image.png",
+  links: {
+    github: "https://github.com/alekseytsvetkov/store"
+  },
   footerNav: [
     {
       items: [
