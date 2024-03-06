@@ -7,4 +7,5 @@ export default {
   'common.settings': 'Settings',
   'common.login': 'Sign In',
   'common.logout': 'Logout',
+  'common.catalog': 'Catalog',
 } as const;

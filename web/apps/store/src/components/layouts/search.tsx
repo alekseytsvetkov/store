@@ -51,7 +51,7 @@ function SearchBar({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<b
       {/* Desktop Bar */}
       <Button
         variant="outline"
-        className="text-muted-foreground relative hidden w-64 justify-between gap-3 text-sm lg:inline-flex w-full"
+        className="text-muted-foreground relative hidden flex-1 justify-between gap-3 text-sm lg:inline-flex"
         onClick={() => setOpen(true)}
       >
         <SearchIcon />
