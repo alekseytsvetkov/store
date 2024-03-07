@@ -58,4 +58,5 @@ export {
   GithubIcon,
   Wallet as WalletIcon,
   Bell as BellIcon,
+  Gamepad2 as GamepadIcon,
 } from 'lucide-react';

@@ -16,8 +16,8 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">
           {children}
+          <SiteFooter />
         </main>
-        <SiteFooter />
       </I18nProviderClient>
     </>
   );

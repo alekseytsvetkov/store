@@ -6,7 +6,7 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export default async function Index({ params: { locale } }: { params: { locale: string } }) {
+export default async function IndexPage({ params: { locale } }: { params: { locale: string } }) {
   setStaticParamsLocale(locale);
 
   const t = await getScopedI18n('index');

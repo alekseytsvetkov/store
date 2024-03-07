@@ -10,7 +10,7 @@ import { CatalogMenu } from './catalog-menu';
 
 export async function SiteHeader() {
   return (
-    <header className="relative w-full border-b">
+    <header className="bg-background sticky top-0 z-50 w-full border-b">
       <nav className="container flex h-16 items-center px-4 text-sm font-medium text-slate-800 dark:text-slate-300">
         <div className="grid w-full">
           <div className="col-span-2 flex items-center justify-start gap-2">
