@@ -1,5 +1,11 @@
 'use client';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@store/ui/components/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@store/ui/components/select';
 import Image from 'next/image';
 import { useChangeLocale, useCurrentLocale } from '~/locales/client';
 
@@ -20,8 +26,6 @@ export function LanguageSwitcher() {
   const locale = useCurrentLocale();
   const changeLocale = useChangeLocale();
 
-  console.log(locale)
-
   return (
     <Select defaultValue={locale} onValueChange={changeLocale}>
       <SelectTrigger id="area">
@@ -31,12 +35,12 @@ export function LanguageSwitcher() {
         {LANGUAGES.map((language) => (
           <SelectItem key={language.code} value={language.code}>
             <Image
-                src={language.image}
-                alt={language.name}
-                width={18}
-                height={18}
-                className="rounded"
-              />
+              src={language.image}
+              alt={language.name}
+              width={18}
+              height={18}
+              className="rounded"
+            />
           </SelectItem>
         ))}
       </SelectContent>
