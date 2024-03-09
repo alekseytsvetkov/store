@@ -1,72 +1,72 @@
-import type { FooterItem } from "~/types"
+import type { FooterItem } from '~/types';
 
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Store",
-  description: "Store description",
-  url: "https://store.dev",
-  ogImage: "https://store.dev/og-image.png",
+  name: 'Store',
+  description: 'Store description',
+  url: 'https://store.dev',
+  ogImage: 'https://store.dev/og-image.png',
   links: {
-    github: "https://github.com/alekseytsvetkov/store"
+    github: 'https://github.com/alekseytsvetkov/store',
   },
   footerNav: [
     {
       items: [
         {
-          title: 'Помощь',
+          title: 'support',
           href: '/support',
           external: false,
         },
         {
-          title: 'О проекте',
+          title: 'about',
           href: '/about',
           external: false,
         },
         {
-          title: 'Контакты',
+          title: 'contacts',
           href: '/contacts',
           external: false,
         },
-      ]
+      ],
     },
     {
       items: [
         {
-          title: 'Правила',
+          title: 'rules',
           href: '/laws/rules',
           external: false,
         },
         {
-          title: 'Агентский договор',
+          title: 'agreement_contract',
           href: '/laws/agreement-contract',
           external: false,
         },
         {
-          title: 'Соглашение',
+          title: 'license_agreement',
           href: '/laws/license-agreement',
           external: false,
         },
         {
-          title: 'Конфиденциальность',
+          title: 'privacy_policy',
           href: '/laws/privacy-policy',
           external: false,
-        }
-      ]
+        },
+      ],
     },
     {
       items: [
         {
-          title: 'Оплата',
+          title: 'payment',
           href: '/payment',
           external: false,
         },
         {
-          title: 'Сотркудничество',
+          title: 'cooperation',
           href: '/cooperation',
           external: false,
-        }
-      ]
-    }
+        },
+      ],
+    },
   ] satisfies FooterItem[],
-}
+};
