@@ -18,7 +18,7 @@ import { cn } from '@store/ui/cn';
 import Link from 'next/link';
 import { useScopedI18n } from '~/locales/client';
 
-export  function UserNav() {
+export function UserNav() {
   const t = useScopedI18n('common');
 
   const [loading, setLoading] = useState(false);
@@ -64,10 +64,23 @@ export  function UserNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
-          <Link href={`/user/${session.user.name}`} suppressHydrationWarning>
+          <Link
+            href={`/user/${session.user.name}`}
+            suppressHydrationWarning
+            className="flex flex-row items-center"
+          >
+            <Avatar className="mr-2 h-8 w-8">
+              <AvatarImage
+                src={session.user.image ?? ''}
+                alt={session.user.name ?? 'user'}
+                height={8}
+                width={8}
+              />
+              <AvatarFallback>{session.user.name}</AvatarFallback>
+            </Avatar>
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">{session.user.name}</p>
-              <p className="text-muted-foreground text-xs leading-none">{session.user.email}</p>
+              <p className="text-muted-foreground text-xs leading-none">{t('my_profile')}</p>
             </div>
           </Link>
         </DropdownMenuLabel>
@@ -102,7 +115,7 @@ export  function UserNav() {
     <Button
       variant="outline"
       className={cn(
-        'focus:bg-accent w-20 rounded-lg bg-transparent p-2 text-black duration-300 hover:bg-gray-200 focus:outline-none dark:text-white hover:dark:bg-accent',
+        'focus:bg-accent hover:dark:bg-accent w-20 rounded-lg bg-transparent p-2 text-black duration-300 hover:bg-gray-200 focus:outline-none dark:text-white',
         loading || (status === 'loading' && 'w-10'),
       )}
       disabled={loading || status === 'loading'}
