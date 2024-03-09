@@ -26,9 +26,9 @@ export default {
   'apps.offer_type_gems': 'Gems',
   'apps.offer_type_leagues': 'Leagues',
   'apps.offer_type_cups': 'Cups',
-  'apps.offer_type_brawl_pass': 'Brawl Pass',
+  'apps.offer_type_brawl-pass': 'Brawl Pass',
   'apps.offer_type_achievements': 'Achievements',
-  'apps.offer_type_battle_pass': 'Battle Pass',
+  'apps.offer_type_battle-pass': 'Battle Pass',
   'home.page_title': 'Game values exchange',
   'home.page_description':
     'Store - a safe and convenient service where you can buy or sell game values',

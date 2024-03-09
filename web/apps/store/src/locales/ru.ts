@@ -26,9 +26,9 @@ export default {
   'apps.offer_type_gems': 'Гемы',
   'apps.offer_type_leagues': 'Лиги',
   'apps.offer_type_cups': 'Кубки',
-  'apps.offer_type_brawl_pass': 'Brawl Pass',
+  'apps.offer_type_brawl-pass': 'Brawl Pass',
   'apps.offer_type_achievements': 'Достижения',
-  'apps.offer_type_battle_pass': 'Battle Pass',
+  'apps.offer_type_battle-pass': 'Battle Pass',
   'home.page_title': 'Биржа игровых ценностей',
   'home.page_description':
     'Store - безопасный и удобный сервис, где можно купить или продать игровые ценности',

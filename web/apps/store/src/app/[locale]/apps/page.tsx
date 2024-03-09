@@ -31,7 +31,7 @@ const APPS = [
           },
           {
             name: 'Battle Pass',
-            slug: 'battle_pass',
+            slug: 'battle-pass',
           },
           {
             name: 'Training',
@@ -74,7 +74,7 @@ const APPS = [
           },
           {
             name: 'Brawl Pass',
-            slug: 'brawl_pass',
+            slug: 'brawl-pass',
           },
           {
             name: 'Training',
