@@ -40,7 +40,7 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    transpilePackages: ['@store/db', '@store/ui', '@store/auth'],
+    transpilePackages: ['@store/ui'],
     images: {
         remotePatterns: [
             {

@@ -1,7 +1,7 @@
 {
   "pipeline": {
     "build": {
-      "dependsOn": ["^build", "@store/db#db:generate"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "env": [
         "VERCEL_URL",
@@ -35,7 +35,7 @@
       "outputMode": "errors-only"
     },
     "format": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/prettiercache"],
       "outputMode": "errors-only"
     },
@@ -44,7 +44,7 @@
       "outputMode": "errors-only"
     },
     "format:fix": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/prettiercache"],
       "outputMode": "errors-only"
     },
@@ -53,22 +53,22 @@
       "outputMode": "errors-only"
     },
     "lint": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"],
       "outputMode": "errors-only"
     },
     "//#lint:fix": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"],
       "outputMode": "errors-only"
     },
     "lint:fix": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"],
       "outputMode": "errors-only"
     },
     "typecheck": {
-      "dependsOn": ["@store/db#db:generate", "^topo"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"],
       "outputMode": "errors-only"
     },
@@ -76,7 +76,6 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["@store/db#db:generate"],
       "persistent": true,
       "cache": false
     }

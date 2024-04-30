@@ -34,6 +34,7 @@ export default {
     'Store - a safe and convenient service where you can buy or sell game values',
   'home.buy_now': 'Buy now',
   'home.sell_now': 'Sell now',
+  'header.become_a_seller': 'Become a seller',
   'footer.support': 'Support',
   'footer.about': 'About',
   'footer.contacts': 'Contacts',

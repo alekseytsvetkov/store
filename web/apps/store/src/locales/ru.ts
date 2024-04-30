@@ -34,6 +34,7 @@ export default {
     'Store - безопасный и удобный сервис, где можно купить или продать игровые ценности',
   'home.buy_now': 'Купить сейчас',
   'home.sell_now': 'Продать сейчас',
+  'header.become_a_seller': 'Стать продавцом',
   'footer.support': 'Поддержка',
   'footer.about': 'О нас',
   'footer.contacts': 'Контакты',

@@ -7,8 +7,11 @@ import { Search } from './search';
 import { UserNav } from './user-nav';
 import { Button } from '@store/ui/components/button';
 import { CatalogMenu } from './catalog-menu';
+import { useScopedI18n } from '~/locales/client';
 
 export async function SiteHeader() {
+  const t = useScopedI18n('header');
+
   return (
     <header className="bg-background sticky top-0 z-50 w-full border-b">
       <nav className="container flex h-16 items-center px-4 text-sm font-medium text-slate-800 dark:text-slate-300">
@@ -34,6 +37,14 @@ export async function SiteHeader() {
           </div>
         </div>
       </nav>
+      <div className="flex border-t">
+        <div className="container flex flex-row-reverse py-2">
+          <Link href="/offers/create">
+            {t('become_a_seller')}
+            <span className="sr-only">Become a seller</span>
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }

@@ -1,4 +1,0 @@
-{
-  "extends": "@store/tsconfig/base.json",
-  "include": ["routes"]
-}

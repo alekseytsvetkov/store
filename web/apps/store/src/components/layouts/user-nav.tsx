@@ -11,8 +11,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@store/ui/components/avatar';
 import { Button } from '@store/ui/components/Button';
 import { useState } from 'react';
-import { signIn, signOut, useSession } from '@store/auth/react';
-import { RoleTypes } from '@store/db/types';
+// import { signIn, signOut, useSession } from '@store/auth/react';
+// import { RoleTypes } from '@store/db/types';
 import { CogIcon, Loader2, LogIn, LogOutIcon, StoreIcon, UserCircleIcon } from '@store/ui/icons';
 import { cn } from '@store/ui/cn';
 import Link from 'next/link';
@@ -22,18 +22,29 @@ export function UserNav() {
   const t = useScopedI18n('common');
 
   const [loading, setLoading] = useState(false);
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
-  const isAdmin = session?.user?.role?.includes(RoleTypes.ADMIN);
-  const isMod = session?.user?.role?.includes(RoleTypes.MODERATOR);
-  const isAdminOrMod = isAdmin || isMod;
+  // const isAdmin = session?.user?.role?.includes(RoleTypes.ADMIN);
+  // const isMod = session?.user?.role?.includes(RoleTypes.MODERATOR);
+  // const isAdminOrMod = isAdmin || isMod;
+
+  // mock session
+
+  const session = {
+    user: {
+      role: 'admin',
+      name: 'base',
+      image:
+        'https://cdn.discordapp.com/avatars/315899675028750337/9c93a44379df95561c5ed2ebc8e16bc3.webp',
+    },
+  };
 
   // NOTE: 1. loading == true -> 2. signIn() -> 3. session status == 'loading' (loading == false)
   const handleSignIn = async () => {
     try {
       setLoading(true);
       // page reloads after sign in, so no need to setLoading(false), othersiwe ugly visual glitch
-      await signIn('discord', { redirect: false });
+      // await signIn('discord', { redirect: false });
     } catch (error) {
       // only set loading to false if there was an error and page didn't reload after sign in
       setLoading(false);
@@ -41,7 +52,7 @@ export function UserNav() {
   };
 
   const handleSignOut = async () => {
-    await signOut({ redirect: false });
+    // await signOut({ redirect: false });
     // whatever
     window.location.reload();
   };

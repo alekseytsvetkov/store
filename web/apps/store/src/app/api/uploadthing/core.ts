@@ -1,6 +1,4 @@
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
-import { prisma } from '@store/db';
-import { auth } from '@store/auth/server';
 
 const f = createUploadthing({
   /**
@@ -42,15 +40,15 @@ export const ourFileRouter = {
     'image/jpeg': DEFAULT_IMAGE_UPLOAD_PARAMS.image,
   })
     // Set permissions and file types for this FileRoute
-    .middleware(async () => {
-      const session = await auth();
+    // .middleware(async () => {
+    //   // const session = await auth();
 
-      // If you throw, the user will not be able to upload
-      if (!session?.user?.id) throw new Error('Unauthorized');
+    //   // If you throw, the user will not be able to upload
+    //   // if (!session?.user?.id) throw new Error('Unauthorized');
 
-      // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: session.user.id };
-    })
+    //   // Whatever is returned here is accessible in onUploadComplete as `metadata`
+    //   // return { userId: session.user.id };
+    // })
     .onUploadComplete(async ({ metadata, file }) => {
       // save to db
       // await prisma.imageUpload.create({
